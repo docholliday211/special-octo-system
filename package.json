@@ -1,0 +1,23 @@
+{
+  "name": "special-octo-system",
+  "version": "1.0.0",
+  "description": "Josh Ellison colab",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chesterjzara/special-octo-system.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chesterjzara/special-octo-system/issues"
+  },
+  "homepage": "https://github.com/chesterjzara/special-octo-system#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
