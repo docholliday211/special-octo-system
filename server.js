@@ -1,5 +1,9 @@
 const express = require('express');
 const app = express();
+const mongoose = require('mongoose');
+const moment = require('moment');
+const morgan = require('morgan')
+const db = mongoose.connection
 
 // Environment Variables
 const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/blog_app';
@@ -23,7 +27,7 @@ app.use(morgan('tiny'))                             //// Use morgan
 
 // Routes
 const blogController = require('./controllers/blogController.js');
-app.use('/blog', blogController);
+app.use('/blogs', blogController);
 
 // this will catch any route that doesn't exist
 app.get('*', (req, res) => {
