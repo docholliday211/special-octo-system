@@ -7,7 +7,8 @@ app.controller('MainController', [ '$http', function($http) {
  // this will trigger Angular to update the DOM
   this.blogs = []
   this.blog = ''
-  this.createForm = {}
+  this.createForm = {};
+  this.editBlog = {};
 
   // createHoliday method
   this.createBlog = () => {
@@ -66,6 +67,7 @@ app.controller('MainController', [ '$http', function($http) {
       data: blog
     }).then(response => {
       console.log(response.data.blog)
+
     }).catch(err => console.log(err))
   } // close updateCelebrated
 
@@ -81,8 +83,28 @@ app.controller('MainController', [ '$http', function($http) {
 
   }
 
-
   // call the getHolidays method on page load
   this.getBlogs()
+
+  //Edit and Modal
+  this.editBlogModal = (blog) => { 
+    this.editBlog.modal = !this.editBlog.modal;
+    this.editBlog.blog = blog;
+    console.log(blog.tags);
+    let tempTags = blog.tags.slice(0);
+    this.editBlog.blog.tags = tempTags.join(' ');
+  }
+  this.saveEditBlog = (blog) => { 
+    blog.tags = blog.tags.split(' ')
+    console.log(blog.tags);
+    this.updateBlog(blog);
+    this.editBlog = {};
+  }
+  this.cancelEditBlog = (blog) => { 
+    this.editBlog = {};
+    console.log(blog);
+    this.getBlogs(blog);
+  }
+
 
 }]) // closes app.controller
