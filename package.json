@@ -19,11 +19,9 @@
   "homepage": "https://github.com/chesterjzara/special-octo-system#readme",
   "dependencies": {
     "express": "^4.16.4",
-<<<<<<< HEAD
-=======
     "moment": "^2.24.0",
     "mongoose": "^5.5.8",
->>>>>>> 7517e57be14904464f3c6b82a104fb056a35b9b7
+
     "morgan": "^1.9.1"
   }
 }
