@@ -33,8 +33,7 @@ app.use('/blogs', blogController);
 app.get('*', (req, res) => {
     res.status(404).json('Sorry, page not found')
 })
-  
+
 app.listen(PORT, () => {
     console.log('Listening on port', PORT)
 })
-

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- add Angular app -->
+<html ng-app='BlogsApp'>
+  <head>
+    <meta charset="utf-8">
+    <title>Blog</title>
+   <!--import Angular  -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js" charset="utf-8"></script>
+   <!-- import our app.js file -->
+   <script src="js/app.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <!-- add our angular contorller -->
+   <body ng-controller='MainController as ctrl'>
+     <div class="container">
+       <h5> {{ ctrl.h5 }} </h5>
+       <form ng-submit='ctrl.createBlog()'>
+          <input type="text" ng-model='ctrl.createForm.title' placeholder="Blog name">
+          <textarea ng-model="ctrl.createForm.text" name="textarea" rows="8" cols="80"></textarea>
+          <input type="text" ng-model="ctrl.createForm.tags">
+          <input type="submit" value="Create New Blog">
+       </form>
+       <!-- <table>
+
+         <tr ng-repeat="holiday in ctrl.holidays">
+          <td ng-dblclick="ctrl.updateCelebrated( holiday )"
+              ng-class="(holiday.celebrated ? 'celebrated' : '' )"
+              ng-mouseover="ctrl.chooseOneHoliday( holiday )"
+          > {{ holiday.name }} Day</td>
+          <td ng-click="ctrl.deleteHoliday(holiday._id)">x</td>
+         </tr>
+       <table> -->
+      <div>
+       <div ng-repeat="blog in ctrl.blogs" class="details">
+         <h3>{{blog.title}}</h3>
+         <hr>
+         <p> {{blog.text}} Day </p>
+         <h6> {{ blog.likes }} </h6>
+         <h7> {{ blog.tags }}</h7>
+         <br>
+         <h8> {{blog.createdAt}}</h8>
+         <button ng-click="ctrl.deleteBlog(blog._id)">Delete</button>
+       </div>
+      </div>
+    </div>
+
+  </body>
+</html>
