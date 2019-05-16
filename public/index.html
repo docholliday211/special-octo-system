@@ -1,50 +1,75 @@
 <!DOCTYPE html>
 <!-- add Angular app -->
 <html ng-app='BlogsApp'>
-  <head>
-    <meta charset="utf-8">
-    <title>Blog</title>
-   <!--import Angular  -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js" charset="utf-8"></script>
-   <!-- import our app.js file -->
-   <script src="js/app.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/skeleton.css">
-    <link rel="stylesheet" href="css/main.css">
-  </head>
-  <!-- add our angular contorller -->
-   <body ng-controller='MainController as ctrl'>
-     <div class="container">
-       <h5> {{ ctrl.h5 }} </h5>
-       <form ng-submit='ctrl.createBlog()'>
-          <input type="text" ng-model='ctrl.createForm.title' placeholder="Blog name">
-          <textarea ng-model="ctrl.createForm.text" name="textarea" rows="8" cols="80"></textarea>
-          <input type="text" ng-model="ctrl.createForm.tags">
-          <input type="submit" value="Create New Blog">
-       </form>
-       <!-- <table>
 
-         <tr ng-repeat="holiday in ctrl.holidays">
-          <td ng-dblclick="ctrl.updateCelebrated( holiday )"
-              ng-class="(holiday.celebrated ? 'celebrated' : '' )"
-              ng-mouseover="ctrl.chooseOneHoliday( holiday )"
-          > {{ holiday.name }} Day</td>
-          <td ng-click="ctrl.deleteHoliday(holiday._id)">x</td>
-         </tr>
-       <table> -->
-      <div>
-       <div ng-repeat="blog in ctrl.blogs" class="details">
-         <h3>{{blog.title}}</h3>
-         <hr>
-         <p> {{blog.text}} Day </p>
-         <h6> {{ blog.likes }} </h6>
-         <h7> {{ blog.tags }}</h7>
-         <br>
-         <h8> {{blog.createdAt}}</h8>
-         <button ng-click="ctrl.deleteBlog(blog._id)">Delete</button>
-       </div>
+<head>
+  <meta charset="utf-8">
+  <title>Blog</title>
+  <!--import Angular  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js" charset="utf-8"></script>
+  <!-- import our app.js file -->
+  <script src="js/app.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<!-- add our angular controller -->
+
+<body ng-controller='MainController as ctrl'>
+  <div class="container">
+    <h1>My Blog</h1>
+
+    <form class="new-post" ng-submit='ctrl.createBlog()'>
+      <input type="text" ng-model='ctrl.createForm.title' placeholder="Blog name">
+      <textarea ng-model="ctrl.createForm.text" name="textarea" placeholder="Blog Post Text" rows="8"
+        cols="80"></textarea>
+      <input type="text" placeholder="Tags (space separated)" ng-model="ctrl.createForm.tags">
+      <input type="submit" class="melon-button" id="submit-new-post" value="Create New Blog Post">
+    </form>
+
+    <div>
+      <div ng-repeat="blog in ctrl.blogs" class="post-content">
+        <div class="post-header">
+          <h3>{{blog.title}}</h3>
+          <div class="likes-tags">
+            <h6 class="melon-button"> {{ blog.likes }} <span class='like-button' ng-click="ctrl.increaseLikes(blog)"> Like! </span> </h6>
+            <h7> Tags: {{ blog.tags }}</h7>
+          </div>
+        </div>
+        <hr>
+        <p> {{blog.text}}</p>
+        
+        <h8> Posted: {{blog.createdAt}}</h8>
+        <button ng-click="ctrl.deleteBlog(blog._id)" class="melon-button">Delete</button>
+        <button ng-click="ctrl.editBlogModal(blog)" class="melon-button">Edit</button>
       </div>
     </div>
+  </div>
 
-  </body>
+  <div class="modal" ng-class="(ctrl.editBlog.modal ? 'edit' : '')">
+    <form class="modal-form">
+      <div class="row">
+        <div class="title-tag-row">
+          <label>Title
+            <input type="text" ng-model="ctrl.editBlog.blog.title" id="title">
+          </label>
+          <label for="tags">Tags
+            <input type="text" ng-model="ctrl.editBlog.blog.tags" id="tags">
+          </label>
+        </div>
+
+        <label for="text">Text </label>
+        <textarea class="edit-text-content u-full-width" ng-model="ctrl.editBlog.blog.text" id="text"></textarea>
+
+        
+
+        <input type="submit" ng-click="ctrl.saveEditBlog(ctrl.editBlog.blog)" value="Update Blog" class="button-primary">
+        <button class="melon-button" ng-click="ctrl.cancelEditBlog(ctrl.editBlog.blog)"> Don't Update </button>
+      </div>
+    </form>
+  </div>
+
+
+</body>
+
 </html>

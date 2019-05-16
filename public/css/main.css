@@ -1,0 +1,108 @@
+hr{
+    border: 1px solid black;
+    width: 100%;
+}
+body {
+    background-color: #EFEFEF;
+}
+
+/* 
+#96858F - dusty
+#6D7993 - lavendar
+#9099A2 - overcast
+#D5D5D5 - paper
+
+#CAEBF2 -sky
+#A9A9A9 -carbon
+#FF3B3F - watermelon
+#EFEFEF - neutral
+
+*/
+
+/* Inputs */
+.new-post {
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: #6D7993;
+    padding: 20px;
+}
+.melon-button {
+    background-color: #FF3B3F;
+    color: #EFEFEF;
+    font-size: 1em;
+    font-weight: bold;
+}
+.melon-button:hover {
+    background-color: #A9A9A9;
+    color: black;
+}
+#submit-new-post {
+    background-color: #FF3B3F;
+    color: #EFEFEF;
+    font-size: 1em;
+    font-weight: bold;
+}
+#submit-new-post:hover {
+    background-color: #A9A9A9;
+    color: black;
+}
+
+/* Posts */
+.post-content {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    padding: 10px;
+    margin: 20px 0;
+    background-color: #CAEBF2;
+    border-radius: 5px;
+}
+.post-header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.likes-tags {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+.likes-tags > * {
+    margin: 0 10px;
+    border: 1px solid black;
+    padding: 1em;
+}
+
+/* Edit and Modal  */
+.modal {
+    background-color: #CAEBF2;
+    position: fixed;
+    margin: 0 10vw;
+    padding-top: 3em;
+    top: 3em;
+    left: 0;
+    height: 80%;
+    width: 80%;
+    z-index: 2;
+    overflow: auto;
+    display : none;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-radius: 10px;
+    border: 5px solid #A9A9A9;
+}
+.modal-form {
+    padding: 20px;
+}
+.edit {
+    display: block;
+}
+.title-tag-row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+}
+.edit-text-content {
+    height: 50vh;
+}
