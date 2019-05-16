@@ -36,15 +36,35 @@
        <div ng-repeat="blog in ctrl.blogs" class="details">
          <h3>{{blog.title}}</h3>
          <hr>
-         <p> {{blog.text}} Day </p>
-         <h6> {{ blog.likes }} </h6>
+         <p> {{blog.text}}</p>
+         <h6> {{ blog.likes }} <span ng-click="ctrl.increaseLikes(blog)"> Like! </span> </h6>
          <h7> {{ blog.tags }}</h7>
          <br>
          <h8> {{blog.createdAt}}</h8>
          <button ng-click="ctrl.deleteBlog(blog._id)">Delete</button>
+         <button ng-click="ctrl.editBlogModal(blog)">Edit</button>
        </div>
       </div>
     </div>
+
+    <div class="modal" ng-class="(ctrl.editBlog.modal ? 'edit' : '')">
+      <form>
+        <div class="row">
+          <label for="title">Title</label>
+          <input type="text" ng-model="ctrl.editBlog.blog.title" id="title">
+          
+          <label for="text">Text </label>
+          <textarea class="u-full-width" ng-model="ctrl.editBlog.blog.text" id="text"></textarea>
+          
+          <label for="tags">Tags</label>
+          <input type="text" ng-model="ctrl.editBlog.blog.tags"  id="tags">
+                    
+          <input type="submit" ng-click="ctrl.saveEditBlog(ctrl.editBlog.blog)" value="Update Blog" class="button-primary">
+          <button class="button-red" ng-click="ctrl.cancelEditBlog(ctrl.editBlog.blog)"> Don't Update </button>
+        </div>
+      </form>
+    </div>
+
 
   </body>
 </html>
